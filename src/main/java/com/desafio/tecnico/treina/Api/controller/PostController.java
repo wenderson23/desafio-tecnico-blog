@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.desafio.tecnico.treina.Api.dto.PostDto;
 import com.desafio.tecnico.treina.Api.model.Comentario;
 import com.desafio.tecnico.treina.Api.model.Post;
 import com.desafio.tecnico.treina.Api.model.Usuario;
@@ -40,7 +41,7 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<Post> criarPost(@Valid @RequestBody PostDTO postDTO) {
+    public ResponseEntity<Post> criarPost(@Valid @RequestBody PostDto postDTO) {
         Optional<Usuario> authorOptional = usuarioRepository.findById(postDTO.getAuthorId());
         if (authorOptional.isPresent()) {
             Usuario author = authorOptional.get();
